@@ -26,10 +26,8 @@ export class LoginComponent implements OnInit {
       if(user){
         this.gAuth.auth({IdToken: user.idToken})
           .subscribe(
-            (res:any) =>{
-              this.user = user;
-              console.log("From the from the login component")
-              console.log(res);
+            () =>{
+              
               this.router.navigate([`private/anio`]);
             },
             (err:any) => {

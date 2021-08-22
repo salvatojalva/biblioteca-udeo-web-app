@@ -17,7 +17,6 @@ export class AnioComponent implements OnInit {
           .subscribe(
             (res:any) =>{
               
-              console.log("From the from the login component")
               console.log(res);
               
             },
