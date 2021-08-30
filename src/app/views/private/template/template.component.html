@@ -1,1 +1,30 @@
-<h1>Authenticated view!</h1>
+<!--<app-header></app-header> -->
+
+
+<div class="wrapper ">
+
+    <app-side-menu></app-side-menu>
+    
+    <div class="main-panel">
+        <!-- Navbar -->
+        <app-header></app-header>
+        <!-- End Navbar -->
+        <div class="content">
+            <div class="container-fluid">
+                <router-outlet></router-outlet>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                
+                <div class="copyright float-right">
+                    Biblioteca UDEO WebApp
+                    -
+                    <a href="https://www.udeo.edu.gt" target="_blank">UDEO</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

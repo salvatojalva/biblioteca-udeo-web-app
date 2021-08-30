@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AnioComponent } from './anio.component';
+import { CategoriaEditComponent } from './categoria-edit.component';
 
-describe('AnioComponent', () => {
-  let component: AnioComponent;
-  let fixture: ComponentFixture<AnioComponent>;
+describe('CategoriaEditComponent', () => {
+  let component: CategoriaEditComponent;
+  let fixture: ComponentFixture<CategoriaEditComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AnioComponent ]
+      declarations: [ CategoriaEditComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AnioComponent);
+    fixture = TestBed.createComponent(CategoriaEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

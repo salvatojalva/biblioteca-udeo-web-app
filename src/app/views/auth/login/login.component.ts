@@ -4,6 +4,7 @@ import { SocialUser } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { GoogleAuthService } from 'src/app/core/core/services/google-auth.service';
 import { Router } from '@angular/router';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -24,11 +25,14 @@ export class LoginComponent implements OnInit {
     this.authService.authState.subscribe((user: SocialUser) => {
       
       if(user){
+        
         this.gAuth.auth({IdToken: user.idToken})
           .subscribe(
             () =>{
+
+              localStorage.setItem('user_data', JSON.stringify(user))
               
-              this.router.navigate([`private/anio`]);
+              this.router.navigate([`private`]);
             },
             (err:any) => {
               this.errorExist = true;

@@ -1,19 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TemplateComponent } from './template/template.component';
-import { AnioComponent } from './anio/anio.component';
-//import { SharedModule } from 'src/app/shared/shared.module';
+
 import { PrivateRoutingModule } from './private-routing.module';
-//import { LayoutComponent } from './layout/layout.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
-    TemplateComponent,
-    AnioComponent
+    TemplateComponent
   ],
   imports: [
     CommonModule,
-    //SharedModule,
+    SharedModule,
     PrivateRoutingModule
   ]
 })

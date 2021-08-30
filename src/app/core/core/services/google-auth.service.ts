@@ -26,6 +26,7 @@ export class GoogleAuthService {
         return data;
         
       }), catchError( error => {
+        localStorage.removeItem("user_data");
         return throwError( 'Something went wrong!' );
       })
    )
@@ -43,6 +44,8 @@ export class GoogleAuthService {
   logout() {
       localStorage.removeItem("id_token");
       localStorage.removeItem("expires_at");
+      localStorage.removeItem("user_data");
+
   }
 
   public isLoggedIn() {
