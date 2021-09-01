@@ -5,6 +5,7 @@ import { EditorialRoutingModule } from './editorial-routing.module';
 import { EditorialListComponent } from './editorial-list/editorial-list.component';
 import { EditorialCreateComponent } from './editorial-create/editorial-create.component';
 import { EditorialEditComponent } from './editorial-edit/editorial-edit.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { EditorialEditComponent } from './editorial-edit/editorial-edit.componen
   ],
   imports: [
     CommonModule,
-    EditorialRoutingModule
+    EditorialRoutingModule,
+    SharedModule
   ]
 })
 export class EditorialModule { }

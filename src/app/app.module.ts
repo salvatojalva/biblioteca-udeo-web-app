@@ -11,6 +11,8 @@ import { GoogleLoginProvider } from 'angularx-social-login';
 
 import { CoreModule } from './core/core/core.module';
 import { httpInterceptorProviders } from './config';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,10 @@ import { httpInterceptorProviders } from './config';
     AppRoutingModule,
     HttpClientModule,
     SocialLoginModule,
-    CoreModule
+    CoreModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RxReactiveFormsModule
   ],
   providers: [
     {

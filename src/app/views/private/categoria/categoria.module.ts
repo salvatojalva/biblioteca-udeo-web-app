@@ -5,6 +5,7 @@ import { CategoriaRoutingModule } from './categoria-routing.module';
 import { CategoriaListComponent } from './categoria-list/categoria-list.component';
 import { CategoriaCreateComponent } from './categoria-create/categoria-create.component';
 import { CategoriaEditComponent } from './categoria-edit/categoria-edit.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CategoriaEditComponent } from './categoria-edit/categoria-edit.componen
   ],
   imports: [
     CommonModule,
-    CategoriaRoutingModule
+    CategoriaRoutingModule,
+    SharedModule
   ]
 })
 export class CategoriaModule { }

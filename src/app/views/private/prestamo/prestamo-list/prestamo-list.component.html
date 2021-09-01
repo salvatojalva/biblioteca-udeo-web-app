@@ -5,17 +5,25 @@
         </div>
         <div class="card-body">
 
-                <div class="row">
-                    <div class="col-md-9">
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Buscar prestamo por nombre">
-                        </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Buscar prestamo por nombre">
                     </div>
-                    <div class="col-md-3">
-                        <button type="submit" class="btn btn-primary pull-right">Buscar</button>
-                    </div>
-                    
                 </div>
+                <div class="col-md-6 ">
+                    <button type="submit" class="btn btn-warning float-left"> 
+                        <i class="fas fa-search"></i>
+                        Buscar
+                    </button>
+
+                    <button class="btn btn-danger float-right" routerLink="/private/prestamos/create"> 
+                        <i class="fas fa-plus"></i> 
+                        Nuevo
+                    </button>
+                </div>
+
+            </div>
 
             <div class="table-responsive">
                 <table class="table">

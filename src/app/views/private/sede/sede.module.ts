@@ -5,6 +5,7 @@ import { SedeRoutingModule } from './sede-routing.module';
 import { SedeListComponent } from './sede-list/sede-list.component';
 import { SedeEditComponent } from './sede-edit/sede-edit.component';
 import { SedeCreateComponent } from './sede-create/sede-create.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { SedeCreateComponent } from './sede-create/sede-create.component';
   ],
   imports: [
     CommonModule,
-    SedeRoutingModule
+    SedeRoutingModule,
+    SharedModule
   ]
 })
 export class SedeModule { }

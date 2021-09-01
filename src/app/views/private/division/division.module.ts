@@ -5,6 +5,7 @@ import { DivisionRoutingModule } from './division-routing.module';
 import { DivisionListComponent } from './division-list/division-list.component';
 import { DivisionEditComponent } from './division-edit/division-edit.component';
 import { DivisionCreateComponent } from './division-create/division-create.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { DivisionCreateComponent } from './division-create/division-create.compo
   ],
   imports: [
     CommonModule,
-    DivisionRoutingModule
+    DivisionRoutingModule,
+    SharedModule
   ]
 })
 export class DivisionModule { }

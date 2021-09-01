@@ -5,6 +5,7 @@ import { DocumentoRoutingModule } from './documento-routing.module';
 import { DocumentoListComponent } from './documento-list/documento-list.component';
 import { DocumentoCreateComponent } from './documento-create/documento-create.component';
 import { DocumentoEditComponent } from './documento-edit/documento-edit.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { DocumentoEditComponent } from './documento-edit/documento-edit.componen
   ],
   imports: [
     CommonModule,
-    DocumentoRoutingModule
+    DocumentoRoutingModule,
+    SharedModule
   ]
 })
 export class DocumentoModule { }
