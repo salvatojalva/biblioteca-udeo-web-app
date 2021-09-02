@@ -1,9 +1,16 @@
-<form>
+<form [formGroup]="itemForm" (ngSubmit)="handleData()">
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
                 <label class="bmd-label-floating">Nombre Completo</label>
-                <input type="text" class="form-control">
+                <input
+                    id="Nombre" 
+                    name="Nombre"
+                    formControlName="Nombre" 
+                    required
+                    type="text" 
+                    class="form-control"
+                >
             </div>
         </div>
     </div>
@@ -11,10 +18,17 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label class="bmd-label-floating">Fecha de nacimiento</label>
-                <input type="date" class="form-control">
+                <input 
+                    id="FechaNacimiento" 
+                    name="FechaNacimiento"
+                    formControlName="FechaNacimiento" 
+                    required
+                    type="date" 
+                    class="form-control"
+                >
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-warning pull-right">Guardar</button>
+    <button [disabled]="!itemForm.valid" type="submit" class="btn btn-warning pull-right">Guardar</button>
     <div class="clearfix"></div>
 </form>

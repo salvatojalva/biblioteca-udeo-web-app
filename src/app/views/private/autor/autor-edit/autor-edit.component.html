@@ -7,7 +7,11 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
-                    <app-form-autor></app-form-autor>
+                    <app-form-autor
+                        *ngIf="dataLoaded"
+                        [item]="item"
+                        (callBack)="save($event)"
+                    ></app-form-autor>
                 </div>
             </div>
         </div>
