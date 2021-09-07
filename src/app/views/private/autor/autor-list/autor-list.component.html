@@ -8,17 +8,17 @@
             <div class="row mb-5">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Buscar prestamo por nombre">
+                        <input type="email" class="form-control" placeholder="Buscar autor por nombre">
                     </div>
                 </div>
                 <div class="col-md-6 ">
-                    <button type="submit" class="btn btn-warning float-left"> 
+                    <button type="submit" class="btn btn-warning float-left">
                         <i class="fas fa-search"></i>
                         Buscar
                     </button>
 
-                    <button class="btn btn-danger float-right" routerLink="/private/autores/create"> 
-                        <i class="fas fa-plus"></i> 
+                    <button class="btn btn-danger float-right" routerLink="/private/autores/create">
+                        <i class="fas fa-plus"></i>
                         Nuevo
                     </button>
                 </div>
@@ -39,7 +39,7 @@
                                 {{item.Nombre}}
                             </td>
                             <td>
-                                <button 
+                                <button
                                     routerLink="/private/autores/edit/{{item.Id}}"
                                     class="btn btn-warning btn-sm"
                                 > <i class="fas fa-pencil-alt"></i> </button>

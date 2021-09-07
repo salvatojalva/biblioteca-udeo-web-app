@@ -1,15 +1,17 @@
 <div class="col-md-12">
-    <div class="card">
-        <div class="card-header card-header-danger">
-            <h4 class="card-title">Crear editorial</h4>
-            <p class="card-category">Ingrese el nombre</p>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <app-form-editorial></app-form-editorial>
-                </div>
-            </div>
-        </div>
-    </div>
+  <div class="card">
+      <div class="card-header card-header-danger">
+          <h4 class="card-title">Crear editorial</h4>
+          <p class="card-category">Ingrese el nombre</p>
+      </div>
+      <div class="card-body">
+          <div class="row">
+              <div class="col-md-6">
+                  <app-form-editorial
+                      (callBack)="save($event)"
+                  ></app-form-editorial>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>

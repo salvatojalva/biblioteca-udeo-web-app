@@ -1,61 +1,53 @@
 <div class="col-md-12">
-    <div class="card">
-        <div class="card-header card-header-danger">
-            <h4 class="card-title ">Todas las sedes</h4>
-        </div>
-        <div class="card-body">
+  <div class="card">
+      <div class="card-header card-header-danger">
+          <h4 class="card-title ">Todas las sedes</h4>
+      </div>
+      <div class="card-body">
 
-            <div class="row mb-5">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Buscar sede por nombre">
-                    </div>
-                </div>
-                <div class="col-md-6 ">
-                    <button type="submit" class="btn btn-warning float-left"> 
-                        <i class="fas fa-search"></i>
-                        Buscar
-                    </button>
+          <div class="row mb-5">
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <input type="email" class="form-control" placeholder="Buscar sede por nombre">
+                  </div>
+              </div>
+              <div class="col-md-6 ">
+                  <button type="submit" class="btn btn-warning float-left">
+                      <i class="fas fa-search"></i>
+                      Buscar
+                  </button>
 
-                    <button class="btn btn-danger float-right" routerLink="/private/sedes/create"> 
-                        <i class="fas fa-plus"></i> 
-                        Nuevo
-                    </button>
-                </div>
+                  <button class="btn btn-danger float-right" routerLink="/private/sedes/create">
+                      <i class="fas fa-plus"></i>
+                      Nuevo
+                  </button>
+              </div>
 
-            </div>
+          </div>
 
-            <div class="table-responsive">
-                <table class="table">
-                    <thead class=" text-gray">
-                        <th>
-                            ID
-                        </th>
-                        <th>
-                            Nombre
-                        </th>
-                        <th>
-                            Acciones
-                        </th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                1
-                            </td>
-                            <td>
-                                Dakota Rice
-                            </td>
-                            <td>
-                                <button 
-                                    routerLink="/private/sedes/edit/1"
-                                    class="btn btn-warning btn-sm"
-                                > <i class="fas fa-pencil-alt"></i> </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+          <div class="table-responsive">
+              <table class="table">
+                  <thead class=" text-gray">
+                      <th>ID</th>
+                      <th>Nombre</th>
+                      <th>Acciones</th>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let item of items; let i = index">
+                          <td>{{item.Id}}</td>
+                          <td>
+                              {{item.Nombre}}
+                          </td>
+                          <td>
+                              <button
+                                  routerLink="/private/sedes/edit/{{item.Id}}"
+                                  class="btn btn-warning btn-sm"
+                              > <i class="fas fa-pencil-alt"></i> </button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
 </div>

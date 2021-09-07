@@ -9,8 +9,13 @@ import { RxwebValidators } from '@rxweb/reactive-form-validators';
 })
 export class FormAnioComponent implements OnInit {
 
-  @Input() item: any = {};
-  @Output() callBack = new EventEmitter<any>();
+  @Input() item: any = {}; // Padre al hijo
+  @Output() callBack = new EventEmitter<any>(); //Hijo al padre
+  //La propiedad de tipo "EventEmitter", necesaria para emitir el evento personalizado,
+  // debe ser decorada con @Output. Esto le dice al framework que va a
+  //existir una vía de comunicación desde el hijo al padre.
+  //nos sirve para decirle a TypeScript el tipo del dato que nuestro evento
+  //personalizado escalará hacia el padre en su comunicación.
 
   itemForm!: FormGroup;
 
@@ -22,7 +27,7 @@ export class FormAnioComponent implements OnInit {
   ngOnInit(): void {
     this.buildForm();
   }
-
+    //Validacion
   buildForm(){
     if(this.item){
       this.itemForm = this.formBuilder.group({

@@ -13,7 +13,7 @@ export class AnioEditComponent implements OnInit, OnDestroy {
   item!: any;
   Id!: number;
   dataLoaded: boolean = false;
-  
+
   sub!: Subscription;
   subItem!: Subscription;
   subArray: Subscription[] = [];
@@ -36,7 +36,7 @@ export class AnioEditComponent implements OnInit, OnDestroy {
         this.subItem = this.anioService.show(this.Id)
         .subscribe(
           (res: any) => {
-            
+
             this.item = res;
             this.dataLoaded = true;
           },
