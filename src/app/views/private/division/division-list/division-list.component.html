@@ -12,13 +12,13 @@
                     </div>
                 </div>
                 <div class="col-md-6 ">
-                    <button type="submit" class="btn btn-warning float-left"> 
+                    <button type="submit" class="btn btn-warning float-left">
                         <i class="fas fa-search"></i>
                         Buscar
                     </button>
 
-                    <button class="btn btn-danger float-right" routerLink="/private/divisiones/create"> 
-                        <i class="fas fa-plus"></i> 
+                    <button class="btn btn-danger float-right" routerLink="/private/divisiones/create">
+                        <i class="fas fa-plus"></i>
                         Nuevo
                     </button>
                 </div>
@@ -28,27 +28,19 @@
             <div class="table-responsive">
                 <table class="table">
                     <thead class=" text-gray">
-                        <th>
-                            ID
-                        </th>
-                        <th>
-                            Nombre
-                        </th>
-                        <th>
-                            Acciones
-                        </th>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr *ngFor="let item of items; let i = index">
+                            <td> {{item.Id}} </td>
                             <td>
-                                1
+                              {{item.Nombre}}
                             </td>
                             <td>
-                                Dakota Rice
-                            </td>
-                            <td>
-                                <button 
-                                    routerLink="/private/divisiones/edit/1"
+                                <button
+                                    routerLink="/private/divisiones/edit/{{item.Id}}"
                                     class="btn btn-warning btn-sm"
                                 > <i class="fas fa-pencil-alt"></i> </button>
                             </td>

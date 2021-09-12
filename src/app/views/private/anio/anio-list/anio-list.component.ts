@@ -30,7 +30,7 @@ export class AnioListComponent implements OnInit, OnDestroy {
         },
         err => console.error(err)
       );
-    
+
     this.subArray.push(this.subItem);
   }
 
