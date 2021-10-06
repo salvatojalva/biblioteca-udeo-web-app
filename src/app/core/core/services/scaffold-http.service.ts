@@ -31,8 +31,21 @@ export class ScaffoldHttpService {
     return this.httpClient.put( `${environment.apiAuth}/${this.baseURL}/${id}`, itemModel );
   }
 
-  seachByName(queryString:string){
-    return this.httpClient.get(`${environment.apiAuth}/${this.baseURL}/SearchByName/${queryString}`);
+  seachByName(
+    filterString?:string,
+    page?: number,
+    limit?: number
+  ){
+    let params = {
+      filterByName: filterString  ? filterString : '',
+      page: page ? page : '',
+      records: limit ? limit : ''
+    }
+
+    return this.httpClient.get(
+      `${environment.apiAuth}/${this.baseURL}`,
+      { params: params }
+    );
   }
 
 }

@@ -14,6 +14,7 @@ import { httpInterceptorProviders } from './config';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -26,7 +27,7 @@ import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
     CoreModule,
     FormsModule,
     ReactiveFormsModule,
-    RxReactiveFormsModule
+    RxReactiveFormsModule,
   ],
   providers: [
     {

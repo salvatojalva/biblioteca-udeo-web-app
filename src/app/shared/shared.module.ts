@@ -11,6 +11,7 @@ import { FormDivisionComponent } from './forms/form-division/form-division.compo
 import { FormEditorialComponent } from './forms/form-editorial/form-editorial.component';
 import { FormCarreraComponent } from './forms/form-carrera/form-carrera.component';
 import { FormSedeComponent } from './forms/form-sede/form-sede.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 const COMPONENTS = [
   HeaderComponent,
@@ -26,7 +27,8 @@ const COMPONENTS = [
 
 const MODULES = [
   FormsModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+  NgxPaginationModule
 ];
 
 @NgModule({
