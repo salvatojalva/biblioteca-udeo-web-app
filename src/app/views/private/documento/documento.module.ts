@@ -6,13 +6,15 @@ import { DocumentoListComponent } from './documento-list/documento-list.componen
 import { DocumentoCreateComponent } from './documento-create/documento-create.component';
 import { DocumentoEditComponent } from './documento-edit/documento-edit.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { DocumentoViewComponent } from './documento-view/documento-view.component';
 
 
 @NgModule({
   declarations: [
     DocumentoListComponent,
     DocumentoCreateComponent,
-    DocumentoEditComponent
+    DocumentoEditComponent,
+    DocumentoViewComponent
   ],
   imports: [
     CommonModule,

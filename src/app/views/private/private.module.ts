@@ -4,10 +4,12 @@ import { TemplateComponent } from './template/template.component';
 
 import { PrivateRoutingModule } from './private-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { DashboardUsuarioComponent } from './dashboard-usuario/dashboard-usuario.component';
 
 @NgModule({
   declarations: [
-    TemplateComponent
+    TemplateComponent,
+    DashboardUsuarioComponent
   ],
   imports: [
     CommonModule,

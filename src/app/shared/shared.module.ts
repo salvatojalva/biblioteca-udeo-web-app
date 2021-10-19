@@ -12,6 +12,7 @@ import { FormEditorialComponent } from './forms/form-editorial/form-editorial.co
 import { FormCarreraComponent } from './forms/form-carrera/form-carrera.component';
 import { FormSedeComponent } from './forms/form-sede/form-sede.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 const COMPONENTS = [
   HeaderComponent,
@@ -28,7 +29,8 @@ const COMPONENTS = [
 const MODULES = [
   FormsModule,
   ReactiveFormsModule,
-  NgxPaginationModule
+  NgxPaginationModule,
+  NgxExtendedPdfViewerModule
 ];
 
 @NgModule({

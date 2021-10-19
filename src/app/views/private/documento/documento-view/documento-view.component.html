@@ -1,0 +1,10 @@
+<ngx-extended-pdf-viewer 
+    [src]="'assets/files/test.pdf'" 
+    height="90vh"
+    [enablePrint]="false"
+    [showBookmarkButton]="false"
+    [showDownloadButton]="false"
+    [showPrintButton]="false"
+    (contextmenu)="onRightClick($event)"
+>
+</ngx-extended-pdf-viewer>
