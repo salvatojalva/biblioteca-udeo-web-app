@@ -14,38 +14,61 @@ export class DivisionListComponent implements OnInit, OnDestroy {
   subItem!: Subscription;
   subArray: Subscription[] = [];
 
+  title: string = '';
+  page: number = 1;
+  limit: number = 6;
+
+  pageItemsCount!: number;
+
+  pageSizes = [6, 15, 25];
+
   constructor(
-    private divisionService: DivisionesService // Instanciamos nuestro objeto
+    private divisionService: DivisionesService
   ) { }
 
   ngOnInit(): void {
-    this.list(); //llamamos a la funcion creada(init es lo primero que buscar el navegador)
+    this.list();
   }
 
   list(){
-    this.subItem = this.divisionService.getAll() //Esta dentro de scaffol y es metodo que nos manda una URL hacia appi auth
-      .subscribe( //Que es subscrine mas detallado
-        (res:any) => { //Funcion Flecha mas detallado
-          this.items = res;
+    this.subItem = this.divisionService.seachByName(
+      this.title,
+      this.page,
+      this.limit
+    )
+      .subscribe(
+        (res:any) => {
+          this.items = res.records;
+          this.pageItemsCount = res.totalCount;
         },
-        err => console.error(err) //Recoje error en consola
+        err => console.error(err)
       );
-    this.subArray.push(this.subItem);//se crea un arreglo con lo que trae subitem
-    //El método push() añade uno o más elementos al final de un array y devuelve la nueva longitud del array.
+
+    this.subArray.push(this.subItem);
   }
-  //Elimina el arreglo cuando se deja de utilizar
+
   ngOnDestroy(): void{
     this.subArray.forEach((sub) => {
       if(sub) sub.unsubscribe()
     })
   }
-  /*
-  -> unsubscribe
-  Elimina los recursos de la suscripción. Puede, por ejemplo,
-  cancelar una ejecución Observable en curso o cancelar cualquier
-  otro tipo de trabajo que comenzó cuando se creó la Suscripción.
-  */
 
+  handlePageChange(event: any): void {
+    this.page = event;
+    this.list();
+  }
+
+  handlePageSizeChange(event: any): void {
+    this.limit = event.target.value;
+    this.page = 1;
+    this.list();
+  }
+
+
+  searchTitle(): void {
+    this.page = 1;
+    this.list();
+  }
 
 
 }

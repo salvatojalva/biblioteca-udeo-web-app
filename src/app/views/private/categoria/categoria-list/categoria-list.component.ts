@@ -16,6 +16,14 @@ export class CategoriaListComponent implements OnInit, OnDestroy {
   subItem!: Subscription;
   subArray: Subscription[] = [];
 
+  title: string = '';
+  page: number = 1;
+  limit: number = 6;
+
+  pageItemsCount!: number;
+
+  pageSizes = [6, 15, 25];
+
   constructor(
     private categoriaService: CategoriasService
   ) { }
@@ -25,13 +33,19 @@ export class CategoriaListComponent implements OnInit, OnDestroy {
   }
 
   list(){
-    this.subItem = this.categoriaService.getAll()
+    this.subItem = this.categoriaService.seachByName(
+      this.title,
+      this.page,
+      this.limit
+    )
       .subscribe(
         (res:any) => {
-          this.items = res;
+          this.items = res.records;
+          this.pageItemsCount = res.totalCount;
         },
         err => console.error(err)
       );
+
     this.subArray.push(this.subItem);
   }
 
@@ -41,4 +55,20 @@ export class CategoriaListComponent implements OnInit, OnDestroy {
     })
   }
 
+  handlePageChange(event: any): void {
+    this.page = event;
+    this.list();
+  }
+
+  handlePageSizeChange(event: any): void {
+    this.limit = event.target.value;
+    this.page = 1;
+    this.list();
+  }
+
+
+  searchTitle(): void {
+    this.page = 1;
+    this.list();
+  }
 }

@@ -53,7 +53,7 @@ export class AnioListComponent implements OnInit, OnDestroy {
       if(sub) sub.unsubscribe()
     })
   }
-  
+
 
   handlePageChange(event: any): void {
     this.page = event;

@@ -14,6 +14,14 @@ export class SedeListComponent implements OnInit, OnDestroy {
   subItem!: Subscription;
   subArray: Subscription[] = [];
 
+  title: string = '';
+  page: number = 1;
+  limit: number = 6;
+
+  pageItemsCount!: number;
+
+  pageSizes = [6, 15, 25];
+
   constructor(
     private sedeService: SedeService
   ) { }
@@ -23,10 +31,15 @@ export class SedeListComponent implements OnInit, OnDestroy {
   }
 
   list(){
-    this.subItem = this.sedeService.getAll()
+    this.subItem = this.sedeService.seachByName(
+      this.title,
+      this.page,
+      this.limit
+    )
       .subscribe(
         (res:any) => {
-          this.items = res;
+          this.items = res.records;
+          this.pageItemsCount = res.totalCount;
         },
         err => console.error(err)
       );
@@ -38,6 +51,26 @@ export class SedeListComponent implements OnInit, OnDestroy {
     this.subArray.forEach((sub) => {
       if(sub) sub.unsubscribe()
     })
+  }
+
+
+
+
+  handlePageChange(event: any): void {
+    this.page = event;
+    this.list();
+  }
+
+  handlePageSizeChange(event: any): void {
+    this.limit = event.target.value;
+    this.page = 1;
+    this.list();
+  }
+
+
+  searchTitle(): void {
+    this.page = 1;
+    this.list();
   }
 
 }

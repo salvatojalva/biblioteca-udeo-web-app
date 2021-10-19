@@ -1,18 +1,19 @@
 <div class="col-md-12">
   <div class="card">
       <div class="card-header card-header-danger">
-          <h4 class="card-title ">Todas las sedes</h4>
+          <h4 class="card-title ">Todos las sedes</h4>
       </div>
       <div class="card-body">
 
           <div class="row mb-5">
               <div class="col-md-6">
                   <div class="form-group">
-                      <input type="email" class="form-control" placeholder="Buscar sede por nombre">
+                      <input type="text" class="form-control" placeholder="Buscar sede por nombre"
+                          [(ngModel)]="title">
                   </div>
               </div>
               <div class="col-md-6 ">
-                  <button type="submit" class="btn btn-warning float-left">
+                  <button (click)="searchTitle()" class="btn btn-warning float-left">
                       <i class="fas fa-search"></i>
                       Buscar
                   </button>
@@ -33,21 +34,48 @@
                       <th>Acciones</th>
                   </thead>
                   <tbody>
-                      <tr *ngFor="let item of items; let i = index">
+                      <tr *ngFor="
+                          let item of items |
+                          paginate: {
+                              itemsPerPage: limit,
+                              currentPage: page,
+                              totalItems: pageItemsCount
+                          };
+                          let i = index;
+                      ">
                           <td>{{item.Id}}</td>
                           <td>
                               {{item.Nombre}}
                           </td>
                           <td>
-                              <button
-                                  routerLink="/private/sedes/edit/{{item.Id}}"
-                                  class="btn btn-warning btn-sm"
-                              > <i class="fas fa-pencil-alt"></i> </button>
+                              <button routerLink="/private/sedes/edit/{{item.Id}}" class="btn btn-warning btn-sm"> <i
+                                      class="fas fa-pencil-alt"></i> </button>
                           </td>
                       </tr>
                   </tbody>
               </table>
+
+              <div class="row">
+                  <div class="col-sm-6">
+                      <pagination-controls previousLabel="Anterior" nextLabel="Siguiente"
+                          (pageChange)="handlePageChange($event)"></pagination-controls>
+                  </div>
+                  <div class="col-sm-6">
+                      <div class="form-group row">
+                          <label for="inputPassword" class="col-sm-6 col-form-label">Cantidad por pagina:</label>
+                          <div class="col-sm-6">
+                              <select class="form-control form-control-sm" (change)="handlePageSizeChange($event)">
+                                  <option *ngFor="let size of pageSizes" [ngValue]="size">
+                                      {{ size }}
+                                  </option>
+                              </select>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
           </div>
       </div>
   </div>
 </div>
+
