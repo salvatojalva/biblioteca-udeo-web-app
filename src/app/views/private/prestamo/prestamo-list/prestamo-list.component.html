@@ -1,155 +1,82 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-header card-header-danger">
-            <h4 class="card-title ">Todos los prestamos</h4>
+            <h4 class="card-title ">Todas las prestamos</h4>
         </div>
         <div class="card-body">
-
-            <div class="row">
+  
+            <div class="row mb-5">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Buscar prestamo por nombre">
+                        <input type="text" class="form-control" placeholder="Buscar prestamo por nombre"
+                            [(ngModel)]="title">
                     </div>
                 </div>
                 <div class="col-md-6 ">
-                    <button type="submit" class="btn btn-warning float-left"> 
+                    <button (click)="searchTitle()" class="btn btn-warning float-left">
                         <i class="fas fa-search"></i>
                         Buscar
                     </button>
-
-                    <button class="btn btn-danger float-right" routerLink="/private/prestamos/create"> 
-                        <i class="fas fa-plus"></i> 
+  
+                    <button class="btn btn-danger float-right" routerLink="/private/prestamo/create">
+                        <i class="fas fa-plus"></i>
                         Nuevo
                     </button>
                 </div>
-
+  
             </div>
-
+  
             <div class="table-responsive">
                 <table class="table">
-                    <thead class=" text-danger">
-                        <th>
-                            ID
-                        </th>
-                        <th>
-                            Name
-                        </th>
-                        <th>
-                            Country
-                        </th>
-                        <th>
-                            City
-                        </th>
-                        <th>
-                            Salary
-                        </th>
+                    <thead class=" text-gray">
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr *ngFor="
+                            let item of items |
+                            paginate: {
+                                itemsPerPage: limit,
+                                currentPage: page,
+                                totalItems: pageItemsCount
+                            };
+                            let i = index;
+                        ">
+                            <td>{{item.Id}}</td>
                             <td>
-                                1
-                            </td>
-                            <td>
-                                Dakota Rice
-                            </td>
-                            <td>
-                                Niger
-                            </td>
-                            <td>
-                                Oud-Turnhout
-                            </td>
-                            <td class="text-danger">
-                                $36,738
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                2
+                                {{item.Nombre}}
                             </td>
                             <td>
-                                Minerva Hooper
-                            </td>
-                            <td>
-                                Curaçao
-                            </td>
-                            <td>
-                                Sinaai-Waas
-                            </td>
-                            <td class="text-danger">
-                                $23,789
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                3
-                            </td>
-                            <td>
-                                Sage Rodriguez
-                            </td>
-                            <td>
-                                Netherlands
-                            </td>
-                            <td>
-                                Baileux
-                            </td>
-                            <td class="text-danger">
-                                $56,142
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                4
-                            </td>
-                            <td>
-                                Philip Chaney
-                            </td>
-                            <td>
-                                Korea, South
-                            </td>
-                            <td>
-                                Overland Park
-                            </td>
-                            <td class="text-danger">
-                                $38,735
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                5
-                            </td>
-                            <td>
-                                Doris Greene
-                            </td>
-                            <td>
-                                Malawi
-                            </td>
-                            <td>
-                                Feldkirchen in Kärnten
-                            </td>
-                            <td class="text-danger">
-                                $63,542
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                6
-                            </td>
-                            <td>
-                                Mason Porter
-                            </td>
-                            <td>
-                                Chile
-                            </td>
-                            <td>
-                                Gloucester
-                            </td>
-                            <td class="text-danger">
-                                $78,615
+                                <button routerLink="/private/prestamo/edit/{{item.Id}}" class="btn btn-warning btn-sm"> <i
+                                        class="fas fa-pencil-alt"></i> </button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+  
+                <div class="row">
+                    <div class="col-sm-6">
+                        <pagination-controls previousLabel="Anterior" nextLabel="Siguiente"
+                            (pageChange)="handlePageChange($event)"></pagination-controls>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="inputPassword" class="col-sm-6 col-form-label">Cantidad por pagina:</label>
+                            <div class="col-sm-6">
+                                <select class="form-control form-control-sm" (change)="handlePageSizeChange($event)">
+                                    <option *ngFor="let size of pageSizes" [ngValue]="size">
+                                        {{ size }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+  
             </div>
         </div>
     </div>
-</div>
+  </div>
+  
+  
