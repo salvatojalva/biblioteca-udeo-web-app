@@ -25,11 +25,13 @@ export class FormSedeComponent implements OnInit {
   buildForm(){
     if(this.item){
       this.itemForm = this.formBuilder.group({
-        "Nombre": [this.item.Nombre, RxwebValidators.required()]
+        "Nombre": [this.item.Nombre, RxwebValidators.required()],
+        "Direccion": [this.item.Nombre, RxwebValidators.required()]
       });
     }else{
       this.itemForm = this.formBuilder.group({
-        "Nombre": ['', RxwebValidators.required()]
+        "Nombre": ['', RxwebValidators.required()],
+        "Direccion": ['', RxwebValidators.required()]
       });
     }
   }

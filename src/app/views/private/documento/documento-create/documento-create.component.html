@@ -1,1 +1,79 @@
-<p>documento-create works!</p>
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header card-header-danger">
+            <h4 class="card-title">Crear documento</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <form [formGroup]="itemForm" (ngSubmit)="handleData()">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Titulo</label>
+                                    <input id="titulo" name="titulo" formControlName="titulo" required type="text"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Codigo</label>
+                                    <input id="codigo" name="codigo" formControlName="codigo" required type="text"
+                                        class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Cantidad de libros fisicos</label>
+                                    <input id="cantidad" name="cantidad" formControlName="cantidad" required type="number"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="row row-files">
+                            <div class="col-md-6">
+                                <div >
+                                    <label for="exampleFormControlFile1">Portada</label>
+                                    <input 
+                                        type="file" 
+                                        id="portada_file" 
+                                        name="portada_file"
+                                        formControlName="portada_file"
+                                        (change)="handlePortadaFile($event)"
+                                    >
+                                  </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div >
+                                    <label for="exampleFormControlFile1">Libro digital</label>
+                                    <input 
+                                        type="file" 
+                                        
+                                        id="documento_file" 
+                                        name="documento_file"
+                                        formControlName="documento_file"
+                                        (change)="handleDocumentoFile($event)"
+                                    >
+                                  </div>
+                            </div>
+
+                            
+                        </div>
+
+                        <button [disabled]="!itemForm.valid" class="btn btn-warning pull-right">
+                            Guardar
+                        </button>
+                        <div class="clearfix"></div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
