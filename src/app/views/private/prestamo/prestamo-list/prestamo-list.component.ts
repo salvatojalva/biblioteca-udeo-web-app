@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PrestamoService } from 'src/app/core/core/models/prestamo.service';
 
@@ -8,7 +8,6 @@ import { PrestamoService } from 'src/app/core/core/models/prestamo.service';
   styleUrls: ['./prestamo-list.component.scss']
 })
 export class PrestamoListComponent implements OnInit, OnDestroy {
-
 
   items!: any;
 
@@ -47,13 +46,11 @@ export class PrestamoListComponent implements OnInit, OnDestroy {
     this.subArray.push(this.subItem);
   }
 
-
-  ngOnDestroy(): void {
+  ngOnDestroy(): void{
     this.subArray.forEach((sub) => {
       if(sub) sub.unsubscribe()
     })
   }
-
 
   handlePageChange(event: any): void {
     this.page = event;
