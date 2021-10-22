@@ -10,7 +10,7 @@ export class DivisionesService extends ScaffoldHttpService {
   constructor(
     public httpClient: HttpClient
   ) {
-    super(httpClient); //Vamos a consultar a nuestra APPI
-    this.baseURL = 'Division' // Nombre de tabla en la base de datos
+    super(httpClient);
+    this.baseURL = 'Division'
   }
 }

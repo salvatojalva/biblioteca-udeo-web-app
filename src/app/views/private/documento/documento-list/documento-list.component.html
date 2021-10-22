@@ -1,1 +1,98 @@
-<p>documento-list works!</p>
+<div class="col-md-12">
+  <div class="card">
+      <div class="card-header card-header-danger">
+          <h4 class="card-title ">Todos los documentos</h4>
+      </div>
+      <div class="card-body">
+
+          <div class="row mb-5">
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Buscar documento por nombre"
+                          [(ngModel)]="title">
+                  </div>
+              </div>
+              <div class="col-md-6 ">
+                  <button (click)="searchTitle()" class="btn btn-warning float-left">
+                      <i class="fas fa-search"></i>
+                      Buscar
+                  </button>
+
+                  <button class="btn btn-danger float-right" routerLink="/private/documentos/create">
+                      <i class="fas fa-plus"></i>
+                      Nuevo
+                  </button>
+              </div>
+
+          </div>
+
+          <div class="table-responsive">
+              <table class="table">
+                  <thead class=" text-gray">
+                      <th>ID</th>
+                      <th>Codigo</th>
+                      <th>Titulo</th>
+                      <th>Creado</th>
+                      <th>Modificado</th>
+                      <th>Imagen</th>
+                      <th>Acciones</th>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="
+                          let item of items |
+                          paginate: {
+                              itemsPerPage: limit,
+                              currentPage: page,
+                              totalItems: pageItemsCount
+                          };
+                          let i = index;
+                      ">
+                          <td>
+                            {{item.Id}}
+                          </td>
+                          <td>
+                            {{item.Codigo}}
+                          </td>
+                          <td>
+                            {{item.Titulo}}
+                          </td>
+                          <td>
+                            {{item.Creado}}
+                          </td>
+                          <td>
+                            {{item.Modificado}}
+                          </td>
+                          <td>
+                            {{item.Imagen}}
+                          </td>
+                          <td>
+                              <button routerLink="/private/documentos/edit/{{item.Id}}" class="btn btn-warning btn-sm"> <i
+                                      class="fas fa-pencil-alt"></i> </button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+
+              <div class="row">
+                  <div class="col-sm-6">
+                      <pagination-controls previousLabel="Anterior" nextLabel="Siguiente"
+                          (pageChange)="handlePageChange($event)"></pagination-controls>
+                  </div>
+                  <div class="col-sm-6">
+                      <div class="form-group row">
+                          <label for="inputPassword" class="col-sm-6 col-form-label">Cantidad por pagina:</label>
+                          <div class="col-sm-6">
+                              <select class="form-control form-control-sm" (change)="handlePageSizeChange($event)">
+                                  <option *ngFor="let size of pageSizes" [ngValue]="size">
+                                      {{ size }}
+                                  </option>
+                              </select>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>
