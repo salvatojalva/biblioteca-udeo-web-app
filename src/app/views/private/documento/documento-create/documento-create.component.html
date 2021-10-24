@@ -1,79 +1,355 @@
 <div class="col-md-12">
-    <div class="card">
-        <div class="card-header card-header-danger">
-            <h4 class="card-title">Crear documento</h4>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-12">
-                    <form [formGroup]="itemForm" (ngSubmit)="handleData()">
+    <form [formGroup]="itemForm" (ngSubmit)="handleData()">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Crear nuevo documento</h4>
+                    </div>
+                    <div class="card-body">
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="bmd-label-floating">Titulo</label>
-                                    <input id="titulo" name="titulo" formControlName="titulo" required type="text"
-                                        class="form-control">
+                            <div class="col-md-12">
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Titulo</label>
+                                            <input id="titulo" name="titulo" formControlName="titulo" required
+                                                type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Codigo</label>
+                                            <input id="codigo" name="codigo" formControlName="codigo" required
+                                                type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Cantidad de libros fisicos</label>
+                                            <input id="cantidad" name="cantidad" formControlName="cantidad" required
+                                                type="number" class="form-control">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="bmd-label-floating">Codigo</label>
-                                    <input id="codigo" name="codigo" formControlName="codigo" required type="text"
-                                        class="form-control">
+
+                                <div class="row">
+                                    <hr>
                                 </div>
+
+                                <div class="row row-files">
+                                    <div class="col-md-6">
+                                        <div>
+                                            <label for="exampleFormControlFile1">Portada</label>
+                                            <input type="file" id="portada_file" name="portada_file"
+                                                formControlName="portada_file" (change)="handlePortadaFile($event)">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div>
+                                            <label for="exampleFormControlFile1">Libro digital</label>
+                                            <input type="file" id="documento_file" name="documento_file"
+                                                formControlName="documento_file" (change)="handleDocumentoFile($event)">
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="clearfix"></div>
+
+
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="bmd-label-floating">Cantidad de libros fisicos</label>
-                                    <input id="cantidad" name="cantidad" formControlName="cantidad" required type="number"
-                                        class="form-control">
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="row row-files">
-                            <div class="col-md-6">
-                                <div >
-                                    <label for="exampleFormControlFile1">Portada</label>
-                                    <input
-                                        type="file"
-                                        id="portada_file"
-                                        name="portada_file"
-                                        formControlName="portada_file"
-                                        (change)="handlePortadaFile($event)"
-                                    >
-                                  </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div >
-                                    <label for="exampleFormControlFile1">Libro digital</label>
-                                    <input
-                                        type="file"
-
-                                        id="documento_file"
-                                        name="documento_file"
-                                        formControlName="documento_file"
-                                        (change)="handleDocumentoFile($event)"
-                                    >
-                                  </div>
-                            </div>
-
-
-                        </div>
-
-                        <button [disabled]="!itemForm.valid" class="btn btn-warning pull-right">
-                            Guardar
-                        </button>
-                        <div class="clearfix"></div>
-                    </form>
-
+                    </div>
                 </div>
             </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="text-bold ">Seleccionar categoria </span> 
+                                <button (click)="open('Categoria')" class="btn btn-sm btn-warning float-right">
+                                    crear categoria
+                                </button>
+                            </div>
+                            
+                            <div class="col-md-12">
+
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <div class="form-group">
+
+                                            <input 
+                                                id="categoria_name" 
+                                                type="text" 
+                                                class="form-control mx-sm-3"
+                                                [(ngModel)]="searchs.Categoria"
+                                                [ngbTypeahead]="searchCategoria" 
+                                                [inputFormatter]="formatter" 
+                                                [resultFormatter]="formatter"
+                                                placeholder="Buscar por nombre" 
+                                                formControlName="categoria_name"
+                                            />
+                                            
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="text-bold ">Seleccionar anio </span> 
+                                <button (click)="open('Anio')" class="btn btn-sm btn-warning float-right">
+                                    crear anio
+                                </button>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <div class="form-group">
+
+                                            <input 
+                                                id="anio_name" 
+                                                type="text" 
+                                                class="form-control mx-sm-3"
+                                                [(ngModel)]="searchs.Anio"
+                                                [ngbTypeahead]="searchAnio" 
+                                                [inputFormatter]="formatter" 
+                                                [resultFormatter]="formatter"
+                                                placeholder="Buscar por nombre" 
+                                                formControlName="anio_name"
+                                            />
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="text-bold ">Seleccionar editorial </span> 
+                                <button (click)="open('Editorial')" class="btn btn-sm btn-warning float-right">
+                                    crear editorial
+                                </button>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <div class="form-group">
+
+                                            <input 
+                                                id="editorial_name" 
+                                                type="text" 
+                                                class="form-control mx-sm-3"
+                                                [(ngModel)]="searchs.Editorial"
+                                                [ngbTypeahead]="searchEditorial" 
+                                                [inputFormatter]="formatter" 
+                                                [resultFormatter]="formatter"
+                                                placeholder="Buscar por nombre" 
+                                                formControlName="editorial_name"
+                                            />
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="text-bold ">Seleccionar division </span> 
+                                <button (click)="open('Division')" class="btn btn-sm btn-warning float-right">
+                                    crear division
+                                </button>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <div class="form-group">
+
+                                            <input 
+                                                id="division_name" 
+                                                type="text" 
+                                                class="form-control mx-sm-3"
+                                                [(ngModel)]="searchs.Division"
+                                                [ngbTypeahead]="searchDivision" 
+                                                [inputFormatter]="formatter" 
+                                                [resultFormatter]="formatter"
+                                                placeholder="Buscar por nombre" 
+                                                formControlName="division_name"
+                                            />
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="text-bold ">Seleccionar carrera </span> 
+                                <button (click)="open('Carrera')" class="btn btn-sm btn-warning float-right">
+                                    crear carrera
+                                </button>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <div class="form-group">
+
+                                            <input 
+                                                id="carrera_name" 
+                                                type="text" 
+                                                class="form-control mx-sm-3"
+                                                [(ngModel)]="searchs.Carrera"
+                                                [ngbTypeahead]="searchCarrera" 
+                                                [inputFormatter]="formatter" 
+                                                [resultFormatter]="formatter"
+                                                placeholder="Buscar por nombre" 
+                                                formControlName="carrera_name"
+                                            />
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="text-bold ">Seleccionar autores </span> 
+                                <button (click)="open('Autor')" class="btn btn-sm btn-warning float-right">
+                                    crear autor
+                                </button>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <div class="form-group">
+
+                                            <input 
+                                                id="autor_name" 
+                                                type="text" 
+                                                class="form-control mx-sm-3"
+                                                [(ngModel)]="searchs.Autor"
+                                                [ngbTypeahead]="searchAutor" 
+                                                [inputFormatter]="formatter" 
+                                                [resultFormatter]="formatter"
+                                                placeholder="Buscar por nombre" 
+                                                formControlName="autor_name"
+                                                (selectItem)="autorSelected($event)"
+                                            />
+                                        </div>
+
+                                        <div class="badges-list">
+                                            <span class="badge badge-warning"*ngFor="let item of autoresList">
+                                                {{item.Nombre}} <i class="fa fa-times" aria-hidden="true"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="text-bold ">Seleccionar tags </span> 
+                                <button (click)="open('Tag')" class="btn btn-sm btn-warning float-right">
+                                    crear tag
+                                </button>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <div class="form-group">
+
+                                            <input 
+                                                id="tag_name" 
+                                                type="text" 
+                                                class="form-control mx-sm-3"
+                                                [(ngModel)]="searchs.Tag"
+                                                [ngbTypeahead]="searchTag" 
+                                                [inputFormatter]="formatter" 
+                                                [resultFormatter]="formatter"
+                                                placeholder="Buscar por nombre" 
+                                                formControlName="tag_name"
+                                                (selectItem)="tagSelected($event)"
+                                            />
+                                        </div>
+
+                                        <div class="badges-list">
+                                            <span class="badge badge-warning" *ngFor="let item of tagsList">
+                                                {{item.Nombre}} <i class="fa fa-times" aria-hidden="true"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
         </div>
-    </div>
+
+        <button [disabled]="!itemForm.valid" class="btn btn-warning pull-right">
+            Guardar
+        </button>
+    </form>
 </div>

@@ -1,0 +1,41 @@
+<div class="modal-header">
+    <h4 class="modal-title">Crear nueva {{Type}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <app-form-categoria
+        *ngIf="Type == 'Categoria'"
+        (callBack)="save($event)"
+    ></app-form-categoria>
+    <app-form-anio
+        *ngIf="Type == 'Anio'"
+        (callBack)="save($event)"
+    ></app-form-anio>
+    <app-form-autor
+        *ngIf="Type == 'Autor'"
+        (callBack)="save($event)"
+    ></app-form-autor>
+    <app-form-carrera
+        *ngIf="Type == 'Carrera'"
+        (callBack)="save($event)"
+    ></app-form-carrera>
+    <app-form-division
+        *ngIf="Type == 'Division'"
+        (callBack)="save($event)"
+    ></app-form-division>
+    <app-form-editorial
+        *ngIf="Type == 'Editorial'"
+        (callBack)="save($event)"
+    ></app-form-editorial>
+    <app-form-sede
+        *ngIf="Type == 'Sede'"
+        (callBack)="save($event)"
+    ></app-form-sede>
+    <app-form-tag
+        *ngIf="Type == 'Tag'"
+        (callBack)="save($event)"
+    ></app-form-tag>
+
+</div>

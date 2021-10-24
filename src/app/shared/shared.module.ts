@@ -13,6 +13,9 @@ import { FormCarreraComponent } from './forms/form-carrera/form-carrera.componen
 import { FormSedeComponent } from './forms/form-sede/form-sede.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FomrModalComponent } from './forms/fomr-modal/fomr-modal.component';
+import { FormTagComponent } from './forms/form-tag/form-tag.component';
 
 const COMPONENTS = [
   HeaderComponent,
@@ -23,19 +26,22 @@ const COMPONENTS = [
   FormDivisionComponent,
   FormEditorialComponent,
   FormCarreraComponent,
-  FormSedeComponent
+  FormSedeComponent,
+  FomrModalComponent
 ]
 
 const MODULES = [
   FormsModule,
   ReactiveFormsModule,
   NgxPaginationModule,
-  NgxExtendedPdfViewerModule
+  NgxExtendedPdfViewerModule,
+  NgbModule
 ];
 
 @NgModule({
   declarations: [
-    ...COMPONENTS
+    ...COMPONENTS,
+    FormTagComponent
   ],
   imports: [
     CommonModule,

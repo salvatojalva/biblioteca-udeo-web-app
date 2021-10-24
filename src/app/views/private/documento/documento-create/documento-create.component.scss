@@ -12,3 +12,26 @@
         }
     }
 }
+
+.card{
+    .card-body{
+        .row{
+            .col-md-12{
+                .text-bold{
+                    font-size: 14px;
+                    padding-top: 9px;
+                    display: inline-block;
+                    font-weight: 600;
+                }
+
+                .badges-list{
+                    padding: 1px;
+                    span{
+                        margin: 15px 0px 15px 15px;
+                        padding: 10px 15px 10px 10px;
+                    }
+                }
+            }
+        }
+    }
+}
