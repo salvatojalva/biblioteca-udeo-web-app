@@ -68,13 +68,53 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="text-bold ">Tipo </span> 
+                                <button (click)="open('TipoDocumento')" class="btn btn-sm btn-warning float-right">
+                                    crear tipo
+                                </button>
+                            </div>
+                            
+                            <div class="col-md-12">
+
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <div class="form-group">
+
+                                            <input 
+                                                id="tipo_documento_name" 
+                                                type="text" 
+                                                class="form-control mx-sm-3"
+                                                [(ngModel)]="searchs.TipoDocumento"
+                                                [ngbTypeahead]="searchTipoDocumento" 
+                                                [inputFormatter]="formatterTipo" 
+                                                [resultFormatter]="formatterTipo"
+                                                placeholder="Buscar por nombre" 
+                                                formControlName="tipo_documento_name"
+                                                name="tipo_documento_name"
+                                            />
+                                            
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <span class="text-bold ">Seleccionar categoria </span> 
+                                <span class="text-bold ">Categoria </span> 
                                 <button (click)="open('Categoria')" class="btn btn-sm btn-warning float-right">
                                     crear categoria
                                 </button>
@@ -96,6 +136,7 @@
                                                 [resultFormatter]="formatter"
                                                 placeholder="Buscar por nombre" 
                                                 formControlName="categoria_name"
+                                                name="categoria_name"
                                             />
                                             
                                         </div>
@@ -114,7 +155,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <span class="text-bold ">Seleccionar anio </span> 
+                                <span class="text-bold ">Anio </span> 
                                 <button (click)="open('Anio')" class="btn btn-sm btn-warning float-right">
                                     crear anio
                                 </button>
@@ -151,7 +192,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <span class="text-bold ">Seleccionar editorial </span> 
+                                <span class="text-bold ">Editorial </span> 
                                 <button (click)="open('Editorial')" class="btn btn-sm btn-warning float-right">
                                     crear editorial
                                 </button>
@@ -171,6 +212,7 @@
                                                 [resultFormatter]="formatter"
                                                 placeholder="Buscar por nombre" 
                                                 formControlName="editorial_name"
+                                                name="editorial_name"
                                             />
                                         </div>
                                     </div>
@@ -188,7 +230,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <span class="text-bold ">Seleccionar division </span> 
+                                <span class="text-bold ">Division </span> 
                                 <button (click)="open('Division')" class="btn btn-sm btn-warning float-right">
                                     crear division
                                 </button>
@@ -208,6 +250,7 @@
                                                 [resultFormatter]="formatter"
                                                 placeholder="Buscar por nombre" 
                                                 formControlName="division_name"
+                                                name="division_name"
                                             />
                                         </div>
                                     </div>
@@ -225,7 +268,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <span class="text-bold ">Seleccionar carrera </span> 
+                                <span class="text-bold ">Carrera </span> 
                                 <button (click)="open('Carrera')" class="btn btn-sm btn-warning float-right">
                                     crear carrera
                                 </button>
@@ -245,6 +288,45 @@
                                                 [resultFormatter]="formatter"
                                                 placeholder="Buscar por nombre" 
                                                 formControlName="carrera_name"
+                                                name="carrera_name"
+                                            />
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="text-bold ">Sede </span> 
+                                <button (click)="open('Sede')" class="btn btn-sm btn-warning float-right">
+                                    crear sede
+                                </button>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <div class="form-group">
+
+                                            <input 
+                                                id="sede_name" 
+                                                type="text" 
+                                                class="form-control mx-sm-3"
+                                                [(ngModel)]="searchs.Sede"
+                                                [ngbTypeahead]="searchSede" 
+                                                [inputFormatter]="formatter" 
+                                                [resultFormatter]="formatter"
+                                                placeholder="Buscar por nombre" 
+                                                formControlName="sede_name"
+                                                name="sede_name"
                                             />
                                         </div>
                                     </div>
@@ -262,7 +344,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <span class="text-bold ">Seleccionar autores </span> 
+                                <span class="text-bold ">Autores </span> 
                                 <button (click)="open('Autor')" class="btn btn-sm btn-warning float-right">
                                     crear autor
                                 </button>
@@ -282,12 +364,13 @@
                                                 [resultFormatter]="formatter"
                                                 placeholder="Buscar por nombre" 
                                                 formControlName="autor_name"
+                                                name="autor_name"
                                                 (selectItem)="autorSelected($event)"
                                             />
                                         </div>
 
                                         <div class="badges-list">
-                                            <span class="badge badge-warning"*ngFor="let item of autoresList">
+                                            <span class="badge badge-warning"*ngFor="let item of autoresList; let i = index;" (click)="removeAutor(i)">
                                                 {{item.Nombre}} <i class="fa fa-times" aria-hidden="true"></i>
                                             </span>
                                         </div>
@@ -306,7 +389,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <span class="text-bold ">Seleccionar tags </span> 
+                                <span class="text-bold ">Tags </span> 
                                 <button (click)="open('Tag')" class="btn btn-sm btn-warning float-right">
                                     crear tag
                                 </button>
@@ -326,12 +409,13 @@
                                                 [resultFormatter]="formatter"
                                                 placeholder="Buscar por nombre" 
                                                 formControlName="tag_name"
+                                                name="tag_name"
                                                 (selectItem)="tagSelected($event)"
                                             />
                                         </div>
 
                                         <div class="badges-list">
-                                            <span class="badge badge-warning" *ngFor="let item of tagsList">
+                                            <span class="badge badge-warning" *ngFor="let item of tagsList; let i = index;" (click)="removeTag(i)">
                                                 {{item.Nombre}} <i class="fa fa-times" aria-hidden="true"></i>
                                             </span>
                                         </div>
@@ -348,7 +432,7 @@
 
         </div>
 
-        <button [disabled]="!itemForm.valid" class="btn btn-warning pull-right">
+        <button [disabled]="!itemForm.valid || (autoresList.length == 0)" class="btn btn-warning pull-right">
             Guardar
         </button>
     </form>

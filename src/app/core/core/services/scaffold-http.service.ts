@@ -10,10 +10,13 @@ import { map } from 'rxjs/operators';
 export class ScaffoldHttpService {
 
   baseURL!: string;
+  apiUrl!: string;
 
   constructor(
     public httpClient: HttpClient
-  ) { }
+  ) {
+    this.apiUrl = environment.apiAuth;
+   }
 
   
   getAll() {

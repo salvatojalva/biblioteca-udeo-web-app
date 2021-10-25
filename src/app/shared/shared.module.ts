@@ -16,6 +16,7 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FomrModalComponent } from './forms/fomr-modal/fomr-modal.component';
 import { FormTagComponent } from './forms/form-tag/form-tag.component';
+import { FormTipoComponent } from './forms/form-tipo/form-tipo.component';
 
 const COMPONENTS = [
   HeaderComponent,
@@ -27,7 +28,9 @@ const COMPONENTS = [
   FormEditorialComponent,
   FormCarreraComponent,
   FormSedeComponent,
-  FomrModalComponent
+  FomrModalComponent,
+  FormTagComponent,
+  FormTipoComponent
 ]
 
 const MODULES = [
@@ -40,8 +43,7 @@ const MODULES = [
 
 @NgModule({
   declarations: [
-    ...COMPONENTS,
-    FormTagComponent
+    ...COMPONENTS
   ],
   imports: [
     CommonModule,

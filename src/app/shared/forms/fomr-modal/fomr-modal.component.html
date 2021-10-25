@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h4 class="modal-title">Crear nueva {{Type}}</h4>
+    <h4 class="modal-title">Crear {{Type}}</h4>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -35,6 +35,10 @@
     ></app-form-sede>
     <app-form-tag
         *ngIf="Type == 'Tag'"
+        (callBack)="save($event)"
+    ></app-form-tag>
+    <app-form-tag
+        *ngIf="Type == 'TipoDocumento'"
         (callBack)="save($event)"
     ></app-form-tag>
 
