@@ -17,6 +17,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FomrModalComponent } from './forms/fomr-modal/fomr-modal.component';
 import { FormTagComponent } from './forms/form-tag/form-tag.component';
 import { FormTipoComponent } from './forms/form-tipo/form-tipo.component';
+import { ToastComponent } from './toast/toast.component';
+import { SideMenuStudentComponent } from './side-menu-student/side-menu-student.component';
 
 const COMPONENTS = [
   HeaderComponent,
@@ -30,7 +32,9 @@ const COMPONENTS = [
   FormSedeComponent,
   FomrModalComponent,
   FormTagComponent,
-  FormTipoComponent
+  FormTipoComponent,
+  ToastComponent,
+  SideMenuStudentComponent
 ]
 
 const MODULES = [

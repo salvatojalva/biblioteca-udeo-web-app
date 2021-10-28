@@ -118,7 +118,7 @@ export class DocumentoCreateComponent implements OnInit, OnDestroy {
     this.autoresList.splice(index, 1);
   }
 
-  handleData() {
+  handleDataDocumento() {
 
     this.documento = {
       Documento: {

@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplateComponent implements OnInit {
 
-  constructor() { }
+  user: any;
+
+  constructor() { 
+
+  }
 
   ngOnInit(): void {
+    this.user = localStorage.getItem("udeo_user");
+
+    this.user = JSON.parse(this.user);
+    
+    console.log(this.user);
   }
 
 }

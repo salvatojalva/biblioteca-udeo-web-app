@@ -11,11 +11,13 @@ export class ScaffoldHttpService {
 
   baseURL!: string;
   apiUrl!: string;
+  serverUrl!: string;
 
   constructor(
     public httpClient: HttpClient
   ) {
     this.apiUrl = environment.apiAuth;
+    this.serverUrl = environment.api;
    }
 
   

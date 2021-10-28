@@ -1,39 +1,36 @@
+<app-toast class="app-toast"></app-toast>
 <div class="page-header clear-filter">
-    <div class="page-header-image" style="background-image: url('../assets/img/cover.jpg');"></div>
-    <div class="content-center">
-        <div class="col-md-8 ml-auto mr-auto">
-            <div class="brand">
-                <h1 class="title description">
-                    Biblioteca UDEO
-                </h1>
+  <div class="page-header-image" style="background-image: url('../assets/img/cover.jpg');"></div>
+  <div class="content-center">
+    <div class="col-md-8 ml-auto mr-auto">
+      <div class="brand">
+        <h1 class="title description">
+          Biblioteca UDEO
+        </h1>
 
-                <br />
-                <br />
-                <br />
+        <br />
+        <br />
+        <br />
 
-                <button (click)="signIn()" class="btn btn-google btn-round btn-lg"  *ngIf="!user">
-                    <i class="fab fa-google fa-2x"></i>
-                    Inicia sesion con Google
-                </button>
+        <button (click)="signIn()" class="btn btn-google btn-round btn-lg" *ngIf="!user">
+          <i class="fab fa-google fa-2x"></i>
+          Inicia sesion con Google
+        </button>
 
-
-                <div class="card mb-3" style="max-width: 540px;" *ngIf="user">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img [src]="user.photoUrl" class="img-fluid rounded-start" alt="...">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">Bienvenido</h5>
-                          <p class="card-text"> {{user.name}}</p>
-                          <button class="btn btn-secondary" (click)="signOut()">
-                            Cerrar sesion
-                            </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+        <div class="card mb-3" style="max-width: 540px;" *ngIf="user">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img [src]="user.photoUrl" class="img-fluid rounded-start" alt="...">
             </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Bienvenido</h5>
+                <p class="card-text"> {{user.name}}</p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

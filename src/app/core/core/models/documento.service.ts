@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ScaffoldHttpService } from '../services/scaffold-http.service';
+import { map } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -40,9 +42,29 @@ export class DocumentoService extends ScaffoldHttpService{
       form_data.append(`Autores[${cont}][Id]`, item.Autores[key].Id);
     }
 
-
-    console.log(form_data);
-
     return form_data;
   }
+
+  customFiltered(
+    filtro1: string, 
+    FilterByAutor: string, 
+    FilterByTag:string, 
+    page?: number, 
+    limit?: number, 
+  ) {
+    let params = {
+      filtro1: filtro1  ? filtro1 : '',
+      FilterByAutor: FilterByAutor  ? FilterByAutor : '',
+      FilterByTag: FilterByTag  ? FilterByTag : '',
+      page: page ? page : '',
+      records: limit ? limit : ''
+    }
+
+    return this.httpClient.get(
+      `${this.apiUrl}/${this.baseURL}/Busqueda`,
+      { params: params }
+    );
+  }
+
+
 }
