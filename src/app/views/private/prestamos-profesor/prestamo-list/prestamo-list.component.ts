@@ -6,17 +6,14 @@ import { Subscription } from 'rxjs';
   templateUrl: './prestamo-list.component.html',
   styleUrls: ['./prestamo-list.component.scss']
 })
-export class PrestamoListalumnoComponent implements OnInit {
+export class PrestamoListprofesorComponent implements OnInit {
   items!: any;
 
   subItem!: Subscription;
   subArray: Subscription[] = [];
-
   constructor() { }
 
   ngOnInit(): void {
   }
 
 }
-
-

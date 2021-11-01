@@ -13,6 +13,7 @@ import { FormCarreraComponent } from './forms/form-carrera/form-carrera.componen
 import { FormSedeComponent } from './forms/form-sede/form-sede.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { FormPrestamoComponent } from './forms/form-prestamo/form-prestamo.component';
 
 const COMPONENTS = [
   HeaderComponent,
@@ -23,7 +24,8 @@ const COMPONENTS = [
   FormDivisionComponent,
   FormEditorialComponent,
   FormCarreraComponent,
-  FormSedeComponent
+  FormSedeComponent,
+  FormPrestamoComponent
 ]
 
 const MODULES = [
@@ -35,7 +37,8 @@ const MODULES = [
 
 @NgModule({
   declarations: [
-    ...COMPONENTS
+    ...COMPONENTS,
+    FormPrestamoComponent
   ],
   imports: [
     CommonModule,

@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PrestamosAlumnoRoutingModule } from './prestamos-alumno-routing.module';
-import { PrestamoListComponent } from './prestamo-list/prestamo-list.component';
+import { PrestamoListalumnoComponent } from './prestamo-list/prestamo-list.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    PrestamoListComponent
+    PrestamoListalumnoComponent
   ],
   imports: [
     CommonModule,

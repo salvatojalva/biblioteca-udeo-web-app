@@ -50,6 +50,10 @@ const routes: Routes = [{
       path: 'prestamos-alumno',
       loadChildren: () => import('./prestamos-alumno/prestamos-alumno.module').then(m => m.PrestamosAlumnoModule),
     },
+    {
+      path: 'prestamos-profesor',
+      loadChildren: () => import('./prestamos-profesor/prestamos-profesor.module').then(m => m.PrestamosProfesorModule),
+    },
   ]
 
 }];

@@ -8,11 +8,15 @@ import { PrestamoEditComponent } from './prestamo-edit/prestamo-edit.component';
 
 
 
+
+
 @NgModule({
   declarations: [
-    PrestamoListComponent,
+
     PrestamoCreateComponent,
-    PrestamoEditComponent
+    PrestamoEditComponent,
+
+
   ],
   imports: [
     CommonModule,
