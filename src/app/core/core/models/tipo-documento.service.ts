@@ -5,16 +5,12 @@ import { ScaffoldHttpService } from '../services/scaffold-http.service';
 @Injectable({
   providedIn: 'root'
 })
-<<<<<<< HEAD
-export class PrestamoService extends ScaffoldHttpService{
-=======
-export class PrestamoService extends ScaffoldHttpService {
->>>>>>> 070d2630969e17aef75dffa7652151dc8338190b
+export class TipoDocumentoService extends ScaffoldHttpService {
 
   constructor(
     public httpClient: HttpClient
   ) {
     super(httpClient);
-    this.baseURL = 'Prestamo'
+    this.baseURL = 'TipoDocumento'
   }
 }

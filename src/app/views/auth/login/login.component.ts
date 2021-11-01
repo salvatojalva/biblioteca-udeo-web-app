@@ -4,7 +4,7 @@ import { SocialUser } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { GoogleAuthService } from 'src/app/core/core/services/google-auth.service';
 import { Router } from '@angular/router';
-import { JsonPipe } from '@angular/common';
+import { ToastService } from 'src/app/core/core/services/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
     private authService: SocialAuthService,
     private gAuth: GoogleAuthService,
     private router: Router,
+    private toastService: ToastService
   ) {
 
     this.user = null;
@@ -55,11 +56,23 @@ export class LoginComponent implements OnInit {
   }
 
   signIn(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((x: any) => console.log(x));
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((x: any) => {
+      let domain = x.email.substring(x.email.lastIndexOf("@") +1);
+      if(domain != "udeo.edu.gt"){
+        this.toastService.show(
+          'Tu correo no es permitido en este sistema',
+          { classname: 'bg-danger text-light', delay: 2500 }
+        );
+      }
+    });
   }
 
   signOut(): void {
     this.authService.signOut();
+  }
+
+  showStandard() {
+    
   }
 
 }

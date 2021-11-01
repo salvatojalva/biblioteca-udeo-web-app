@@ -13,7 +13,16 @@ import { FormCarreraComponent } from './forms/form-carrera/form-carrera.componen
 import { FormSedeComponent } from './forms/form-sede/form-sede.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+<<<<<<< HEAD
 import { FormPrestamoComponent } from './forms/form-prestamo/form-prestamo.component';
+=======
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FomrModalComponent } from './forms/fomr-modal/fomr-modal.component';
+import { FormTagComponent } from './forms/form-tag/form-tag.component';
+import { FormTipoComponent } from './forms/form-tipo/form-tipo.component';
+import { ToastComponent } from './toast/toast.component';
+import { SideMenuStudentComponent } from './side-menu-student/side-menu-student.component';
+>>>>>>> 070d2630969e17aef75dffa7652151dc8338190b
 
 const COMPONENTS = [
   HeaderComponent,
@@ -25,14 +34,23 @@ const COMPONENTS = [
   FormEditorialComponent,
   FormCarreraComponent,
   FormSedeComponent,
+<<<<<<< HEAD
   FormPrestamoComponent
+=======
+  FomrModalComponent,
+  FormTagComponent,
+  FormTipoComponent,
+  ToastComponent,
+  SideMenuStudentComponent
+>>>>>>> 070d2630969e17aef75dffa7652151dc8338190b
 ]
 
 const MODULES = [
   FormsModule,
   ReactiveFormsModule,
   NgxPaginationModule,
-  NgxExtendedPdfViewerModule
+  NgxExtendedPdfViewerModule,
+  NgbModule
 ];
 
 @NgModule({

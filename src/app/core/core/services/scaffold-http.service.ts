@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +10,15 @@ import { environment } from 'src/environments/environment';
 export class ScaffoldHttpService {
 
   baseURL!: string;
+  apiUrl!: string;
+  serverUrl!: string;
 
   constructor(
     public httpClient: HttpClient
-  ) { }
+  ) {
+    this.apiUrl = environment.apiAuth;
+    this.serverUrl = environment.api;
+   }
 
   
   getAll() {
@@ -24,6 +31,10 @@ export class ScaffoldHttpService {
 
   store(itemModel: any){
     return this.httpClient.post( `${environment.apiAuth}/${this.baseURL}`, itemModel );
+  }
+
+  storeGeneric(itemModel: any, entity: string){
+    return this.httpClient.post( `${environment.apiAuth}/${entity}`, itemModel );
   }
 
   update(id: number, itemModel: any){
@@ -46,6 +57,26 @@ export class ScaffoldHttpService {
       `${environment.apiAuth}/${this.baseURL}`,
       { params: params }
     );
+  }
+
+  search(filter: string) {
+    let params = {
+      filterByName: filter  ? filter : '',
+      page: '',
+      records: ''
+    }
+
+    if (filter === '') {
+      return of([]);
+    }
+
+    return this.httpClient
+      .get<[any, string[]]>(`${environment.apiAuth}/${this.baseURL}`,
+      { params: params }).pipe(
+        map((response:any) => {
+          return response.records
+        })
+      );
   }
 
 }

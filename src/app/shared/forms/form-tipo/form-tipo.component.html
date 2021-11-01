@@ -1,0 +1,26 @@
+<form
+    [formGroup]="itemForm" (ngSubmit)="handleData()"
+>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="bmd-label-floating">Nombre</label>
+                <input 
+                    id="Tipo" 
+                    name="Tipo"
+                    formControlName="Tipo" 
+                    required
+                    type="text" 
+                    class="form-control"
+                >
+            </div>
+        </div>
+    </div>
+    <button 
+        [disabled]="!itemForm.valid"
+        class="btn btn-warning pull-right"
+    >
+        Guardar
+    </button>
+    <div class="clearfix"></div>
+</form>

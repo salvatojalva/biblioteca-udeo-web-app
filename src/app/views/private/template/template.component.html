@@ -1,9 +1,10 @@
 <!--<app-header></app-header> -->
-
+<app-toast class="app-toast"></app-toast>
 
 <div class="wrapper ">
 
-    <app-side-menu></app-side-menu>
+    <app-side-menu *ngIf="user.Rol == 'admin'"></app-side-menu>
+    <app-side-menu-student *ngIf="user.Rol == 'student'"></app-side-menu-student>
 
     <div class="main-panel">
         <!-- Navbar -->

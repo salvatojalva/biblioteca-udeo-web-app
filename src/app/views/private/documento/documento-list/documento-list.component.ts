@@ -15,6 +15,8 @@ export class DocumentoListComponent implements OnInit, OnDestroy {
   subArray: Subscription[] = [];
 
   title: string = '';
+  autorName: string = '';
+  tagName: string = '';
   page: number = 1;
   limit: number = 6;
 
@@ -22,24 +24,31 @@ export class DocumentoListComponent implements OnInit, OnDestroy {
 
   pageSizes = [6, 15, 25];
 
+  serverUrl!: string;
+
 
   constructor(
     private documentoService: DocumentoService
-  ) { }
+  ) {
+    this.serverUrl = this.documentoService.serverUrl+'/Images/';
+
+   }
 
   ngOnInit(): void {
     this.list();
   }
 
   list(){
-    this.subItem = this.documentoService.seachByName(
+    this.subItem = this.documentoService.customFiltered(
       this.title,
+      this.autorName,
+      this.tagName,
       this.page,
       this.limit
     )
       .subscribe(
         (res:any) => {
-          this.items = res.records;
+          this.items = res.result;
           this.pageItemsCount = res.totalCount;
         },
         err => console.error(err)
@@ -69,6 +78,17 @@ export class DocumentoListComponent implements OnInit, OnDestroy {
 
 
   searchTitle(): void {
+    if(this.title != ""){
+      this.autorName = "";
+      this.tagName = "";
+    } else if(this.autorName != ""){
+      this.title = "";
+      this.tagName = "";
+    }else if (this.tagName != ""){
+      this.autorName = "";
+      this.title = "";
+    }
+
     this.page = 1;
     this.list();
   }

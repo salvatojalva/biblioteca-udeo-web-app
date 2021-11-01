@@ -37,6 +37,7 @@ export class GoogleAuthService {
   private setSession(authResult:any) {
       const expiresAt = moment().add(authResult.expiresIn,'second');
 
+      localStorage.setItem('udeo_user', JSON.stringify(authResult.user));
       localStorage.setItem('id_token', authResult.AuthToken);
       localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
   }          
@@ -45,6 +46,7 @@ export class GoogleAuthService {
       localStorage.removeItem("id_token");
       localStorage.removeItem("expires_at");
       localStorage.removeItem("user_data");
+      localStorage.removeItem("udeo_user");
 
   }
 
