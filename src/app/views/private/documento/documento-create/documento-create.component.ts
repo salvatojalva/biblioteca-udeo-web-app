@@ -120,34 +120,49 @@ export class DocumentoCreateComponent implements OnInit, OnDestroy {
 
   handleDataDocumento() {
 
-    this.documento = {
-      Documento: {
-        Codigo: this.itemForm.value.codigo,
-        Titulo: this.itemForm.value.titulo,
-        Portada: this.portadaFile,
-        Documento: this.documentoFile,
-        CantidadEjemplares: this.itemForm.value.cantidad
-      },
-      BelongsTo: {
-        Anio: this.itemForm.value.anio_name.Id,
-        Categoria: this.itemForm.value.categoria_name.Id,
-        Division: this.itemForm.value.division_name.Id,
-        TipoDocumento: this.itemForm.value.tipo_documento_name.Id,
-        Carrera: this.itemForm.value.carrera_name.Id,
-        Sede: this.itemForm.value.sede_name.Id,
-        Editorial: (this.itemForm.value.editorial_name != '') ? this.itemForm.value.editorial_name.Id: null,
-      },
-
-      Tags: this.tagsList,
-      Autores: this.autoresList
+    if(
+      this.itemForm.value.anio_name != null &&
+      this.itemForm.value.categoria_name != null &&
+      this.itemForm.value.division_name != null &&
+      this.itemForm.value.tipo_documento_name != null &&
+      this.itemForm.value.carrera_name != null &&
+      this.itemForm.value.sede_name != null &&
+      this.itemForm.value.editorial_name != null &&
+      this.autoresList.length > 0 &&
+      this.tagsList.length > 0
+    )
+    {
+      this.documento = {
+        Documento: {
+          Codigo: this.itemForm.value.codigo,
+          Titulo: this.itemForm.value.titulo,
+          Portada: this.portadaFile,
+          Documento: this.documentoFile,
+          CantidadEjemplares: this.itemForm.value.cantidad
+        },
+        BelongsTo: {
+          Anio: this.itemForm.value.anio_name.Id,
+          Categoria: this.itemForm.value.categoria_name.Id,
+          Division: this.itemForm.value.division_name.Id,
+          TipoDocumento: this.itemForm.value.tipo_documento_name.Id,
+          Carrera: this.itemForm.value.carrera_name.Id,
+          Sede: this.itemForm.value.sede_name.Id,
+          Editorial: (this.itemForm.value.editorial_name != '') ? this.itemForm.value.editorial_name.Id: null,
+        },
+  
+        Tags: this.tagsList,
+        Autores: this.autoresList
+      }
+  
+      this.sub = this.documentoService.addDocument(this.documento)
+        .subscribe(
+          () => this.router.navigate([`/private/documentos`]),
+          (err) => console.log(err)
+        )
+      this.subArray.push(this.sub);
     }
 
-    this.sub = this.documentoService.addDocument(this.documento)
-      .subscribe(
-        () => this.router.navigate([`/private/documentos`]),
-        (err) => console.log(err)
-      )
-    this.subArray.push(this.sub);
+    
   }
 
   open(type: string) {

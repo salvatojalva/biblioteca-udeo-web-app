@@ -47,8 +47,8 @@ export class DocumentoService extends ScaffoldHttpService{
 
   customFiltered(
     filtro1: string, 
-    FilterByAutor: string, 
-    FilterByTag:string, 
+    FilterByAutor?: string, 
+    FilterByTag?:string, 
     page?: number, 
     limit?: number, 
   ) {
@@ -64,6 +64,34 @@ export class DocumentoService extends ScaffoldHttpService{
       `${this.apiUrl}/${this.baseURL}/Busqueda`,
       { params: params }
     );
+  }
+
+  searchOP(
+    filtro1: string, 
+    FilterByAutor?: string, 
+    FilterByTag?:string, 
+    page?: number, 
+    limit?: number, 
+  ) {
+    let params = {
+      filtro1: filtro1  ? filtro1 : '',
+      FilterByAutor: FilterByAutor  ? FilterByAutor : '',
+      FilterByTag: FilterByTag  ? FilterByTag : '',
+      page: page ? page : '',
+      records: limit ? limit : ''
+    }
+
+    if (filtro1 === '') {
+      return of([]);
+    }
+
+    return this.httpClient
+      .get<[any, string[]]>(`${this.apiUrl}/${this.baseURL}/Busqueda`,
+      { params: params }).pipe(
+        map((response:any) => {
+          return response.result
+        })
+      );
   }
 
 

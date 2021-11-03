@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  api: 'https://gentle-duck-51.loca.lt',
-  apiAuth: 'https://gentle-duck-51.loca.lt/api'
+  api: 'https://rotten-moose-67.loca.lt',
+  apiAuth: 'https://rotten-moose-67.loca.lt/api'
 };
