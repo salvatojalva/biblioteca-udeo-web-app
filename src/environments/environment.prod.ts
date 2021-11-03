@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  api: 'https://fat-fireant-3.loca.lt',
-  apiAuth: 'https://fat-fireant-3.loca.lt/api'
+  api: 'https://gentle-duck-51.loca.lt',
+  apiAuth: 'https://gentle-duck-51.loca.lt/api'
 };
