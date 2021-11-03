@@ -1,0 +1,59 @@
+<form
+    [formGroup]="itemForm" (ngSubmit)="handleData()"
+>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="bmd-label-floating">Nombre</label>
+                <input
+                    id="Nombre"
+                    name="Nombre"
+                    formControlName="Nombre"
+                    required
+                    type="text"
+                    class="form-control"
+                >
+            </div>
+            <div class="form-group">
+                <input
+                    id="Apellido"
+                    name="Apellido"
+                    formControlName="Apellido"
+                    type="hidden"
+                >
+            </div>
+            <div class="form-group">
+                <label class="bmd-label-floating">Correo</label>
+                <input
+                    id="GoogleId"
+                    name="GoogleId"
+                    formControlName="GoogleId"
+                    required
+                    type="email"
+                    class="form-control"
+                >
+            </div>
+
+            <div class="form-group">
+                <label class="bmd-label-floating">Rol</label>
+                <select 
+                    id="Rol"
+                    name="Rol"
+                    formControlName="Rol"
+                    class="form-control" 
+                >
+                    <option *ngFor="let rol of Roles" [ngValue]="rol">
+                        {{ rol }}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <button
+        [disabled]="!itemForm.valid"
+        class="btn btn-warning pull-right"
+    >
+        Guardar
+    </button>
+    <div class="clearfix"></div>
+</form>

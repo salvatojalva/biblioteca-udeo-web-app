@@ -1,84 +1,64 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-header card-header-danger">
-            <h4 class="card-title ">Todos los documentos</h4>
+            <h4 class="card-title ">Todos los usuarios</h4>
         </div>
         <div class="card-body">
-
+  
             <div class="row mb-5">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control"
-                            placeholder="Buscar documento por Titulo, Carrera, Tipo de documento o Anio"
+                        <input type="text" class="form-control" placeholder="Buscar usuario por correo"
                             [(ngModel)]="title">
                     </div>
-
-                    <div class="form-row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Buscar Autor" [(ngModel)]="autorName">
-                            </div>
-                        </div>    
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Buscar Tag" [(ngModel)]="tagName">
-                            </div>
-                        </div>
-                    </div>
-
-                    
-                    
                 </div>
                 <div class="col-md-6 ">
                     <button (click)="searchTitle()" class="btn btn-warning float-left">
                         <i class="fas fa-search"></i>
                         Buscar
                     </button>
-
-                    <button class="btn btn-danger float-right" routerLink="/private/documentos/create">
+  
+                    <button class="btn btn-danger float-right" routerLink="/private/usuarios/create">
                         <i class="fas fa-plus"></i>
                         Nuevo
                     </button>
                 </div>
-
+  
             </div>
-
+  
             <div class="table-responsive">
                 <table class="table">
                     <thead class=" text-gray">
-                        <th>Codigo</th>
-                        <th>Titulo</th>
-                        <th>Carrera</th>
-                        <th>Tipo</th>
-                        <th>Categoria</th>
-                        <th>Portada</th>
+                        <th>Correo</th>
+                        <th>Nombre</th>
+                        <th>Rol</th>
                         <th>Acciones</th>
                     </thead>
                     <tbody>
                         <tr *ngFor="
-                          let item of items |
-                          paginate: {
-                              itemsPerPage: limit,
-                              currentPage: page,
-                              totalItems: pageItemsCount
-                          };
-                          let i = index;
-                      ">
-                            <td> {{item.Codigo}} </td>
-                            <td> {{item.Titulo}} </td>
-                            <td> {{item.Carrera.Nombre}} </td>
-                            <td> {{item.TipoDocumento.Tipo}} </td>
-                            <td> {{item.Categoria.Nombre}} </td>
-                            <td> <img [src]="serverUrl+item.Image" alt="" class="img-thumbnail documento-list-mini">
+                            let item of items |
+                            paginate: {
+                                itemsPerPage: limit,
+                                currentPage: page,
+                                totalItems: pageItemsCount
+                            };
+                            let i = index;
+                        ">
+                            <td>{{item.GoogleId}}</td>
+                            <td>
+                                {{item.Nombre}}
                             </td>
                             <td>
-                                <button routerLink="/private/documentos/edit/{{item.Id}}"
-                                    class="btn btn-warning btn-sm"> <i class="fas fa-pencil-alt"></i> </button>
+                                {{item.Rol}}
+                            </td>
+                            <td>
+                                <button routerLink="/private/usuarios/edit/{{item.Id}}" class="btn btn-warning btn-sm"> <i
+                                        class="fas fa-pencil-alt"></i> </button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-
+  
                 <div class="row">
                     <div class="col-sm-6">
                         <pagination-controls previousLabel="Anterior" nextLabel="Siguiente"
@@ -97,8 +77,10 @@
                         </div>
                     </div>
                 </div>
-
+  
             </div>
         </div>
     </div>
-</div>
+  </div>
+  
+  
