@@ -21,6 +21,8 @@ import { FormTipoComponent } from './forms/form-tipo/form-tipo.component';
 import { ToastComponent } from './toast/toast.component';
 import { SideMenuStudentComponent } from './side-menu-student/side-menu-student.component';
 import { FormUsuarioComponent } from './forms/form-usuario/form-usuario.component';
+import { TableroAdminComponent } from './tableros/tablero-admin/tablero-admin.component';
+import { TableroUserComponent } from './tableros/tablero-user/tablero-user.component';
 
 const COMPONENTS = [
   HeaderComponent,
@@ -38,7 +40,9 @@ const COMPONENTS = [
   ToastComponent,
   SideMenuStudentComponent,
   FormPrestamoComponent,
-  FormUsuarioComponent
+  FormUsuarioComponent,
+  TableroAdminComponent,
+  TableroUserComponent,
 ]
 
 const MODULES = [

@@ -1,62 +1,33 @@
 <div class="col-md-12">
   <div class="card">
     <div class="card-header card-header-danger">
-      <h4 class="card-title">Todos los prestamos</h4>
+      <h4 class="card-title">Todos los prestamos
+
+        <button (click)="listPorAprobar()" class="btn btn-warning float-right">
+          <i class="fas fa-list-alt"></i>
+          Por aprobar
+        </button>
+
+       
+      </h4>
+      
     </div>
     <div class="card-body">
       <!---->
       <div class="row mb-12">
-        <div class="col-md-5">
-          <div class="form-group">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Buscar usuario por nombre"
-              [(ngModel)]="title"
-            />
-          </div>
-        </div>
+        
 
-        <button (click)="searchTitle()" class="btn btn-warning float-left">
-          <i class="fas fa-search"></i>
-          Buscar
-        </button>
-        <div class="col-md">
-          <button
-            class="btn btn-danger float-right"
-            routerLink="/private/prestamos/create"
-          >
-            <i class="fas fa-plus"></i>
-            Nuevo
-          </button>
-        </div>
-
-        <div class="col-md-2">
-          <button
-            class="btn btn-success float-right"
-            routerLink="private/prestamos/listalumno"
-          >
-            <i class="fas fa-list"></i>
-            Lista alumnos
-          </button>
-        </div>
-
-        <div class="col-md-2">
-          <button class="btn btn-success float-right" routerLink="private/prestamos/listalumno">
-            <i class="fas fa-list"></i>
-            Lista profesores
-          </button>
-        </div>
+        
+        
       </div>
       <!---->
 
       <div class="table-responsive">
         <table class="table">
           <thead class="text-gray">
-            <th>Fecha inicio prestamo</th>
-            <th>Fecha fin prestamo</th>
             <th>Usuario</th>
-            <th>Libro</th>
+            <th>Documento</th>
+            <th>Es digital</th>
             <th>Acciones</th>
           </thead>
           <tbody>
@@ -72,14 +43,22 @@
                 let i = index
               "
             >
-              <td>{{ item.id }}</td>
-
+              <td>{{ item.Usuario.GoogleId }}</td>
+              <td>{{ item.Documento.Titulo }}</td>
+              <td>{{ item.EsDigital ? 'Si' : 'No' }}</td>
               <td>
                 <button
-                  routerLink="/private/prestamos/edit/{{ item.Id }}"
-                  class="btn btn-warning btn-sm"
+                  (click)="aprobar(item.Id)" 
+                  class="btn btn-success btn-sm"
                 >
-                  <i class="fas fa-pencil-alt"></i>
+                  <i class="fas fa-check-circle"></i>
+                </button>
+
+                <button
+                  (click)="denegar(item.Id)" 
+                  class="btn btn-danger btn-sm"
+                >
+                  <i class="fas fa-times"></i>
                 </button>
               </td>
             </tr>

@@ -9,7 +9,10 @@ const routes: Routes = [{
   component: TemplateComponent,
   children: [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-    { path: 'dashboard', component: DashboardComponent },
+    { 
+      path: 'dashboard', 
+      loadChildren: () => import('./tablero/tablero.module').then(m => m.TableroModule),
+    },
     {
       path: 'prestamos',
       loadChildren: () => import('./prestamo/prestamo.module').then(m => m.PrestamoModule),

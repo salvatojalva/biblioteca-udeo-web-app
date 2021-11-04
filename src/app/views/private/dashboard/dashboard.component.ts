@@ -8,12 +8,16 @@ import { ToastService } from 'src/app/core/core/services/toast.service';
 })
 export class DashboardComponent implements OnInit {
 
+  user: any;
+
   constructor(
     private toastService: ToastService
   ) { }
 
   ngOnInit(): void {
-    
+    this.user = localStorage.getItem("udeo_user");
+
+    this.user = JSON.parse(this.user);
   }
 
   showStandard() {

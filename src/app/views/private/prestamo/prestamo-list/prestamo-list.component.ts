@@ -17,6 +17,7 @@ export class PrestamoListComponent implements OnInit, OnDestroy {
   title: string = '';
   page: number = 1;
   limit: number = 6;
+  defaultType: string = 'PorAprobar';
 
   pageItemsCount!: number;
 
@@ -29,15 +30,59 @@ export class PrestamoListComponent implements OnInit, OnDestroy {
     this.list();
   }
 
+
+  aprobar(index: number)
+  {
+    this.subItem = this.prestamoService.aprobar(
+      index
+    )
+      .subscribe(
+        (res:any) => {
+          this.listAprobados();
+        },
+        err => console.error(err)
+      );
+
+    this.subArray.push(this.subItem);
+  }
+
+  denegar(index: number)
+  {
+    this.subItem = this.prestamoService.denegar(
+      index
+    )
+      .subscribe(
+        (res:any) => {
+          this.listAprobados();
+        },
+        err => console.error(err)
+      );
+
+    this.subArray.push(this.subItem);
+  }
+
+
+  listPorAprobar()
+  {
+    this.defaultType = 'PorAprobar';
+    this.list();
+  }
+
+  listAprobados()
+  {
+    this.defaultType = 'PorAprobar';
+    this.list();
+  }
+
   list(){
-    this.subItem = this.prestamoService.seachByName(
-      this.title,
+    this.subItem = this.prestamoService.listPorAprobar(
+      this.defaultType,
       this.page,
       this.limit
     )
       .subscribe(
         (res:any) => {
-          this.items = res.records;
+          this.items = res.resul;
           this.pageItemsCount = res.totalCount;
         },
         err => console.error(err)

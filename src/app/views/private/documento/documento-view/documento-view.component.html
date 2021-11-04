@@ -1,8 +1,7 @@
 
-
-
 <ngx-extended-pdf-viewer
-    [src]="'assets/files/test.pdf'"
+    *ngIf="dataLoaded"
+    [src]="serverUrl+item.DocumentoItem.LibroUrl"
     height="90vh"
     [enablePrint]="false"
     [showBookmarkButton]="false"

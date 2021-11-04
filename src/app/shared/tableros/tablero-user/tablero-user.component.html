@@ -1,0 +1,90 @@
+<div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-danger">
+        <h4 class="card-title">Todos mis Prestamos
+  
+            <button class="btn btn-danger float-right" routerLink="/private/prestamos/create">
+                <i class="fas fa-plus"></i>
+                Nuevo Prestamo
+            </button>
+  
+         
+        </h4>
+        
+      </div>
+      <div class="card-body">
+        <!---->
+        <div class="row mb-12">
+          
+  
+          
+          
+        </div>
+        <!---->
+  
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="text-gray">
+              <th>Documento</th>
+              <th>Fecha de retorno</th>
+              <th>Es digital</th>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let item of items
+                    | paginate
+                      : {
+                          itemsPerPage: limit,
+                          currentPage: page,
+                          totalItems: pageItemsCount
+                        };
+                  let i = index
+                "
+              >
+                <td>{{ item.Documento.Titulo }}</td>
+                <td>{{ item.FechaFin }}</td>
+                <td>
+                    {{ item.EsDigital ? '' : 'No' }}
+                    <button *ngIf="item.EsDigital" class="btn btn-danger " routerLink="/private/documentos/view/{{item.Id}}">
+                        <i class="fas fa-book-open"></i>
+                    </button>
+                </td>
+                <td>
+                  
+                </td>
+              </tr>
+            </tbody>
+          </table>
+  
+          <div class="row">
+            <div class="col-sm-6">
+              <pagination-controls
+                previousLabel="Anterior"
+                nextLabel="Siguiente"
+                (pageChange)="handlePageChange($event)"
+              ></pagination-controls>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-6 col-form-label"
+                  >Cantidad por pagina:</label
+                >
+                <div class="col-sm-6">
+                  <select
+                    class="form-control form-control-sm"
+                    (change)="handlePageSizeChange($event)"
+                  >
+                    <option *ngFor="let size of pageSizes" [ngValue]="size">
+                      {{ size }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

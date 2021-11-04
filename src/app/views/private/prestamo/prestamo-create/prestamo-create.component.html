@@ -9,22 +9,13 @@
         <div class="col-md-6">
           <form [formGroup]="itemForm" (ngSubmit)="handleData()">
 
-            <div class="row">
-              <div class="col-md-12">
+            <div class="row" ng>
+              <div class="col-md-12" [hidden]="userRol != 'admin'">
                 <div class="form-group">
                   <label class="bmd-label-floating">Usuario</label>
-                  <input 
-                    id="Usuario" 
-                    type="text" 
-                    class="form-control mx-sm-3"
-                    [(ngModel)]="searchs.Usuario"
-                    [ngbTypeahead]="searchUsuario" 
-                    [inputFormatter]="formatter" 
-                    [resultFormatter]="formatter"
-                    placeholder="Buscar por nombre" 
-                    formControlName="Usuario"
-                    name="Usuario"
-                  />
+                  <input id="Usuario" type="text" class="form-control mx-sm-3" [(ngModel)]="searchs.Usuario"
+                    [ngbTypeahead]="searchUsuario" [inputFormatter]="formatter" [resultFormatter]="formatter"
+                    placeholder="Buscar por nombre" formControlName="Usuario" name="Usuario" />
                 </div>
               </div>
             </div>
@@ -33,19 +24,10 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label class="bmd-label-floating">Libro</label>
-                  <input 
-                    id="Documento" 
-                    type="text" 
-                    class="form-control mx-sm-3"
-                    [(ngModel)]="searchs.Documento"
-                    [ngbTypeahead]="searchDocumento" 
-                    [inputFormatter]="formatterLibro" 
-                    [resultFormatter]="formatterLibro"
-                    placeholder="Buscar por nombre" 
-                    formControlName="Documento"
-                    (selectItem)="documentoSelected($event)"
-                    name="Documento"
-                  />
+                  <input id="Documento" type="text" class="form-control mx-sm-3" [(ngModel)]="searchs.Documento"
+                    [ngbTypeahead]="searchDocumento" [inputFormatter]="formatterLibro"
+                    [resultFormatter]="formatterLibro" placeholder="Buscar por nombre" formControlName="Documento"
+                    (selectItem)="documentoSelected($event)" name="Documento" />
                 </div>
               </div>
             </div>
@@ -53,14 +35,26 @@
 
             <div class="row">
               <div class="col-md-12">
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Libro fisico?</label>
+                <div class="form-check" *ngIf="existDigital">
+                  <input class="form-check-input" type="radio" formControlName="quiere_fisico" name="quiere_fisico" id="quiere_fisico1" required value="1" [(ngModel)]="searchs.QuiereFisico" >
+                  <label class="form-check-label" for="quiere_fisico1">
+                    Libro en digital
+                  </label>
+                </div>
+                <div class="form-check" *ngIf="existFisico">
+                  <input class="form-check-input" type="radio" formControlName="quiere_fisico" name="quiere_fisico" id="quiere_fisico2" required  value="0" [(ngModel)]="searchs.QuiereFisico"  >
+                  <label class="form-check-label" for="quiere_fisico2">
+                    Libro en fisico
+                  </label>
                 </div>
               </div>
             </div>
 
-            <button [disabled]="!itemForm.valid" type="submit" class="btn btn-warning pull-right">Guardar</button>
+            <div class="alert alert-light" role="alert" *ngIf="prestarDisallow">
+               Este documento no esta disponible en ningun formato
+            </div>
+
+            <button  [disabled]="!itemForm.valid || prestarDisallow" type="submit" class="btn btn-warning pull-right">Guardar</button>
             <div class="clearfix"></div>
           </form>
         </div>
