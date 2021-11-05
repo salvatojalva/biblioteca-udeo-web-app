@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  api: 'https://rotten-moose-67.loca.lt',
-  apiAuth: 'https://rotten-moose-67.loca.lt/api'
+  api: 'https://bibliotecaudeo20211104111655.azurewebsites.net',
+  apiAuth: 'https://bibliotecaudeo20211104111655.azurewebsites.net/api'
 };

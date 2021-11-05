@@ -46,13 +46,13 @@
             <div class="table-responsive">
                 <table class="table">
                     <thead class=" text-gray">
-                        <th>Codigo</th>
-                        <th>Titulo</th>
+                        <th>Código</th>
+                        <th>Título</th>
                         <th>Carrera</th>
                         <th>Tipo</th>
-                        <th>Categoria</th>
+                        <th>Categoría</th>
                         <th>Portada</th>
-                        <th>Acciones</th>
+                        <th></th>
                     </thead>
                     <tbody>
                         <tr *ngFor="
@@ -72,8 +72,7 @@
                             <td> <img [src]="serverUrl+item.Image" alt="" class="img-thumbnail documento-list-mini">
                             </td>
                             <td>
-                                <button routerLink="/private/documentos/edit/{{item.Id}}"
-                                    class="btn btn-warning btn-sm"> <i class="fas fa-pencil-alt"></i> </button>
+                                
                             </td>
                         </tr>
                     </tbody>
@@ -86,7 +85,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="inputPassword" class="col-sm-6 col-form-label">Cantidad por pagina:</label>
+                            <label for="inputPassword" class="col-sm-6 col-form-label">Cantidad por página:</label>
                             <div class="col-sm-6">
                                 <select class="form-control form-control-sm" (change)="handlePageSizeChange($event)">
                                     <option *ngFor="let size of pageSizes" [ngValue]="size">
